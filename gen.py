@@ -12,11 +12,11 @@ INPUT_FILE_NAME = 'input.txt'   # имя файла для конфигурац�
 OUTPUT_FILE_NAME = 'output.txt'   # имя файла для ответа
 
 # константы генетического алгоритма
-POPULATION_SIZE = 100     # количество индивидуумов в популяции
+POPULATION_SIZE = 200     # количество индивидуумов в популяции
 P_CROSSOVER = 0.9           # вероятность скрещивания
 P_MUTATION = 0.3          # вероятность мутации индивидуума
 CROSS_INTERVAL_COUNT = 3  # Количсетво интервалов для скрещивания
-MAX_GENERATIONS = 1000    # максимальное количество поколений
+MAX_GENERATIONS = 500    # максимальное количество поколений
 
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
@@ -72,13 +72,11 @@ def clone(value):
 def selTournament(population, p_len):
     offspring = []
     for n in range(p_len):
-        i1 = i2 = i3 = 0
-        while i1 == i2 or i1 == i3 or i2 == i3:
-            i1, i2, i3 = random.randint(
-                0, p_len-1), random.randint(0, p_len-1), random.randint(0, p_len-1)
+        i1 = i2 = 0
+        while i1 == i2:
+            i1, i2 = random.randint(0, p_len-1), random.randint(0, p_len-1)
 
-        offspring.append(max([population[i1], population[i2],
-                         population[i3]], key=lambda ind: ind.fitness.values[0]))
+        offspring.append(max([population[i1], population[i2]], key=lambda ind: ind.fitness.values[0]))
 
     return offspring
 
