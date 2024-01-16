@@ -29,8 +29,3 @@ def k_point_crossover(a: np.ndarray, b: np.ndarray, points: np.ndarray):
             temp_1[last_point:curr_point], temp_2[last_point:curr_point] = temp_2[last_point:curr_point], temp_1[last_point:curr_point]
     
     return temp_1, temp_2
-
-result, result1 = k_point_crossover([1, 2, 3, 4, 5, 6, 9], [6, 5, 4, 3, 2, 1, 3], [1, 3])
-
-print("Res: ", result)
-print("Res1: ", result1)
